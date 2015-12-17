@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SUP_Admin.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+	<title>	</title>
+	<link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/admin.css" rel="Stylesheet" type="text/css" />
+    <style type="text/css">
+        .loginDisplay {
+            visibility: visible;
+        }
+    </style>
+	<asp:ContentPlaceHolder ID="HeadContent" runat="server">
+	</asp:ContentPlaceHolder>
+</head>
+<body>
+	<form runat="server">
+	<div class="page">
+		<div class="header">
+			<div class="title">
+				<h1>
+					<asp:Literal ID="literalOrg" runat="server" Text="Any MISGA Club<br />"></asp:Literal>
+					MISGA-SignUp Administration and Maintenance
+				</h1>
+			</div>
+            <div class="loginDisplay">
+				<asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+					<AnonymousTemplate>
+						[ <a href="Login.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+					</AnonymousTemplate>
+					<LoggedInTemplate>
+						Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+						[ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+					</LoggedInTemplate>
+				</asp:LoginView>
+			</div>
+             
+			<div class="clear hideSkiplink">
+				<asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" 
+					EnableViewState="False" IncludeStyleBlock="False" Orientation="Horizontal" 
+					StaticSubMenuIndent="16px">
+					<DynamicItemTemplate>
+                        <%# Eval("Text") %>
+                    </DynamicItemTemplate>
+					<Items>
+						<asp:MenuItem NavigateUrl="~/Default.aspx" Text="ADMIN" 
+							ToolTip="MISGA Administration Home page"/>
+					</Items>
+				    <StaticItemTemplate>
+                        <%# Eval("Text") %>
+                    </StaticItemTemplate>
+				</asp:Menu>
+			    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+			</div>
+            </div>
+        <div>
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" BorderColor="White" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" > ">
+                    <CurrentNodeStyle ForeColor="#333333" />
+                    <NodeStyle Font-Bold="True" ForeColor="#284E98" />
+                    <PathSeparatorStyle Font-Bold="True" ForeColor="#507CD1" />
+                    <RootNodeStyle Font-Bold="True" ForeColor="#507CD1" />
+            </asp:SiteMapPath>
+		</div>
+		<div class="main">
+			<asp:ContentPlaceHolder ID="MainContent" runat="server">
+				<p>
+					&nbsp;</p>
+			</asp:ContentPlaceHolder>
+		</div>
+		<div class="clear">
+		</div>
+	</div>
+	<div class="footer">
+		<div id="copyright">
+	<p>
+       
+		&copy Copyright 2014, 2015 by Thomas M. Rowlett, All Rights Reserved</p>
+		</div>
+	
+	</div>
+	</form>
+</body>
+</html>

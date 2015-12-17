@@ -1,0 +1,40 @@
+﻿body {
+    font-family: 'Times New Roman',serif;
+    font-size: medium;
+    color: black;
+}
+.user_div {
+    margin: 10px 5px 10px 5px;
+    padding: 0px 0px 0px 0px;
+}
+.udatecol {
+    width: 100px;
+}
+.uctrlcol {
+    width: 40px;
+}
+.usercol {
+    width: 100px;
+}
+.upwdcol {
+    width: 100px;
+}
+.userNamecol {
+    width: 200px;
+}
+.uclubcol {
+    width: 60px;
+}
+.uemailcol {
+    width: 200px;
+}
+.uphonecol {
+    width: 120px;
+}
+.urolecol {
+    width: 50px;
+}
+.ulogincntcol {
+    width: 50px;
+}
+

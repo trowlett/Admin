@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Default.aspx" title="ADMIN"  description="MISGA Administration Home page">
+    <siteMapNode url="" title="Signup List"  description="List the players signed up for an Event">
+        <siteMapNode title="Players List" description="Players List" url="~/Signups/SignupList.aspx" />
+        <siteMapNode title="Edit Sign Up DB" description="Edit Sign Up DB" url="~/Signups/EditSignupDB.aspx" />
+        <siteMapNode title="Clear Marked Entries" description="Clear Marked Entries" url="~/Signups/Clear.aspx" />
+        <siteMapNode title="Purge Prior Year Entries" description="Purge Prior Year Entries" url="~/Signups/purge_prior_year.aspx" />
+        <siteMapNode title="All Player's Lists" description="Access All Players lIst Entries" url="~/Signups/AllSignups.aspx" />
+      </siteMapNode>
+      <siteMapNode url="" title="Events"  description="Manage the data in the  Events Database">
+        <siteMapNode title="Add Event" description="Add Event" url="~/Events/addevent.aspx" />
+        <siteMapNode title="Modify Events" description="Modify Events" url="~/Events/modifyEvents.aspx" />
+        <siteMapNode title="Load Events" description="Load Events from Text File" url="~/Events/loadevents.aspx" />
+        <siteMapNode title="Purge Events" description="Purge aome or all the Events in the Events Database" url="~/Events/PurgeEvents.aspx" />
+        </siteMapNode>
+      <siteMapNode url="" title="Members" description="Work with the Members Database">
+        <siteMapNode title="Edit Members" description="Edit the Members Database" url="~/Members/editmember.aspx" />
+        <siteMapNode title="Update Handicaps" description="Update the Handicaps in the Memebrs Database using .csv file" url="~/Members/updatehandicaps.aspx" />
+      </siteMapNode>
+      <siteMapNode url="" title="Parameters" description="Parameters">
+        <siteMapNode title="Edit Parameters" description="Edit Parameters" url="~/Parameters/EditParam.aspx" />
+        <siteMapNode title="Add Parameters" description="Add Parameters" url="~/Parameters/AddParam.aspx" />
+        <siteMapNode title="Set First &amp; Last Date" description="Set the First and Last Date parameter to enable signups" url="~/LastDate/LastDate.aspx" />
+      </siteMapNode>
+      <siteMapNode url="~/About.aspx" title="About" description="About"></siteMapNode>
+      <siteMapNode url="" title="Settings" description="Settings">
+        <siteMapNode title="Club" description="Club" url="~/Clubs/ClubsMain.aspx" />
+        <siteMapNode title="Users" description="Users" url="~/User/usermain.aspx" />
+      </siteMapNode>
+  </siteMapNode>
+</siteMap>
