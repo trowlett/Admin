@@ -12,6 +12,10 @@ public partial class SiteMaster : System.Web.UI.MasterPage
     protected string OrgURL { get; set; }
     public Settings clubSettings { get; set; }
     protected string txtUserName;
+    const string roleGuest = "1";
+    const string roleUser = "2";
+    const string roleAdmin = "3";
+    const string roleMaster = "4";
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -47,22 +51,22 @@ public partial class SiteMaster : System.Web.UI.MasterPage
         //navigationMenu is already established with the root (home) entry
         MenuItem signupListMenuItem = new MenuItem("Signup List", "Signup List");
         MenuItem playersListMenuItem = new MenuItem("Players List", "Players List", "", "~/Signups/SignupList.aspx");
-        if (RoleLevel == "1")       // Guest Role
+        if (RoleLevel == roleGuest)       // Guest Role
         {
             signupListMenuItem.ChildItems.Add(playersListMenuItem);
             navigationMenu.Items.Add(signupListMenuItem);
         }
         else
         {                           
-            if (RoleLevel == "2")       //  User Role
+            if (RoleLevel == roleUser)       //  User Role
             {
                 signupListMenuItem.ChildItems.Add(playersListMenuItem);
                 navigationMenu.Items.Add(signupListMenuItem);
-                AddMembersMenu(navigationMenu);
+                AddMembersMenu(navigationMenu, RoleLevel);
             }
             else
             {
-                // Rolelevel == "3" and "4"        User Admin
+                // Rolelevel == "3" and "4"        User Admin and Master
 
                 // SIGNUP LIST Menu Items
                 MenuItem allSignupListMenuItem = 
@@ -95,7 +99,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
                 // MEMBERS Menu Items
 
-                AddMembersMenu(navigationMenu);
+                AddMembersMenu(navigationMenu, RoleLevel);
 
                 //  PARAMETERS Menu Items
 
@@ -108,16 +112,18 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                     new MenuItem("Set First & Last Date", "Set Dates", "", "~/LastDate/LastDate.aspx");
                 parametersMenuItem.ChildItems.Add(editParametersMenuItem);
                 parametersMenuItem.ChildItems.Add(addParameterMenuItem);
-                parametersMenuItem.ChildItems.Add(setDatesMenuItem);
+                parametersMenuItem.ChildItems.Add(setDatesMenuItem); 
                 navigationMenu.Items.Add(parametersMenuItem);
 
-                if (RoleLevel == "4")           // Master Role
+                if (RoleLevel == roleMaster)           // Master Role
                 {
+//                    MenuItem utilitiesMenuItem = new MenuItem("Utilities", "Utilities");
                     MenuItem settingsMenuItem = new MenuItem("Settings", "Settings");
                     MenuItem clubsSubMenuItem = new MenuItem("Clubs", "Clubs", "", "~/Clubs/Clubsmain.aspx");
                     MenuItem usersSubMenuItem = new MenuItem("Users", "Users", "", "~/User/usermain.aspx");
                     settingsMenuItem.ChildItems.Add(clubsSubMenuItem);
                     settingsMenuItem.ChildItems.Add(usersSubMenuItem);
+//                    utilitiesMenuItem.ChildItems.Add(settingsMenuItem);
                     navigationMenu.Items.Add(settingsMenuItem);
                 }
             }
@@ -127,7 +133,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
 
     }
 
-    protected void AddMembersMenu(Menu navigationMenu)
+    protected void AddMembersMenu(Menu navigationMenu, string RoleLevel)
     {
         MenuItem membersMenuItem = new MenuItem("Members", "Members");
         MenuItem editMembersMenuItem = new MenuItem("Edit Members", "Edit Members", "", "~/Members/editmember.aspx");
@@ -137,6 +143,11 @@ public partial class SiteMaster : System.Web.UI.MasterPage
         membersMenuItem.ChildItems.Add(editMembersMenuItem);
         membersMenuItem.ChildItems.Add(updateHandicapsMenuItem);
         membersMenuItem.ChildItems.Add(listMSGAHandicapsMenuItem);
+        if (RoleLevel == roleMaster)
+        {
+            MenuItem inputMenuItem = new MenuItem("Input Members", "Input Members", "", "~/Members/inputMembers.aspx");
+            membersMenuItem.ChildItems.Add(inputMenuItem);
+        }
         navigationMenu.Items.Add(membersMenuItem);
 
     }

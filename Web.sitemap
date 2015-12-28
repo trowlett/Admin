@@ -19,6 +19,7 @@
         <siteMapNode title="Edit Members" description="Edit the Members Database" url="~/Members/editmember.aspx" />
         <siteMapNode title="Update Handicaps" description="Update the Handicaps in the Memebrs Database using .csv file" url="~/Members/updatehandicaps.aspx" />
         <siteMapNode title="List Handicaps" description="List all the Club's Handicaps either from MSGA or an uploaded file." url="~/Members/ListHandicaps.aspx" />
+        <siteMapNode title="Input Members" description="Input all members from an uploaded text file." url="~/Members/inputMembers.aspx" />
       </siteMapNode>
       <siteMapNode url="" title="Parameters" description="Parameters">
         <siteMapNode title="Edit Parameters" description="Edit Parameters" url="~/Parameters/EditParam.aspx" />

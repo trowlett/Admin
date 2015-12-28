@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 /// </summary>
 public class MembersList
 {
+    private static readonly char[] delimiterChars = { '\t', ';' };      // tab and semicolon
 
 	private Collection<MrMember> members = new Collection<MrMember>();
 
@@ -131,7 +132,60 @@ public class MembersList
 		return err;
 	}
 
+    public static MembersList LoadMembersFromTextFile(string clubID, string fileName)
+    {
+        MembersList target = new MembersList();
+        int readCount = 0;
 
+        string[] lines = System.IO.File.ReadAllLines(fileName);
+        foreach (String line in lines)
+        {
+            if (line.Trim() == "")
+            {
+                // Ignore this line
+            }
+            else if (line.Substring(0, 1) == "/")
+            {
+                // Ignore comment line
+            }
+            else
+            {
+                if (readCount == 0)
+                {
+                    readCount = 1;    // Ignore header record
+                }
+                else
+                {
+                    string[] fields = line.Split(delimiterChars);
+                    if (fields.Length != 11)
+                    {
+                        throw new InvalidOperationException("DERP: Incorrect number of fields in " + fileName);
+                    }
+                    readCount++;
+                    MrMember e = new MrMember()
+                    {
+                        clubID = clubID,
+                        pID = Convert.ToInt32(fields[0]),
+                        name = fields[1].ToUpper(),
+                        lname = fields[2],
+                        fname = fields[3],
+                        hcp = fields[4],
+                        memberNumber = fields[5],
+                        gender = Convert.ToInt32(fields[6]),
+                        title = fields[7],
+                        active = Convert.ToInt32(fields[8]),
+                        hdate = Convert.ToDateTime(fields[9]),
+                        del = Convert.ToInt32(fields[10])
+                    };
+
+                    target.Members.Add(e);
+                }
+            }
+        }
+
+        return target;
+
+    }
 	public MembersList()
 	{
         _count = 0;
