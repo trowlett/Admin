@@ -19,9 +19,18 @@
 </script>
 
 
+            <table style="width: 100%;">
+    <tr>
+    <td style="width: 70%;">
     <h2>
-        Purge Events from Database
-</h2>
+        Purge Events from Database for <%= club %></h2>
+        </td>
+    <td>
+        <h4 style="text-align: right;font-size: .7em;"> 
+            December 30, 2015
+        Update
+        </h4></td></tr></table>
+
     <p>
         <asp:Label ID="DBInfo" runat="server" Text="database info"></asp:Label>
         <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True" 

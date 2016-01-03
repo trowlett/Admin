@@ -34,18 +34,18 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:MRMISGADBConnect %>" 
             DeleteCommand="DELETE FROM PlayersList WHERE (ClubID = @ClubID) AND (EventID = @EventID) AND (PlayerID = @PlayerID)" 
-            SelectCommand="SELECT PlayersList.ClubID, PlayersList.TransDate, PlayersList.EventID, PlayersList.PlayerID, PlayersList.Action, PlayersList.Carpool, PlayersList.Marked, PlayersList.SpecialRule, Players.Name, Players.PlayerID AS Expr1, Players.ClubID AS Expr2 FROM PlayersList INNER JOIN Players ON PlayersList.PlayerID = Players.PlayerID AND PlayersList.ClubID = Players.ClubID WHERE (PlayersList.ClubID = @ClubID) ORDER BY PlayersList.EventID, PlayersList.TransDate, Players.Name"            
+            SelectCommand="SELECT ClubID, TransDate, EventID, PlayerID, Action, Carpool, Marked, SpecialRule, GuestID FROM PlayersList WHERE (ClubID = @ClubID) ORDER BY EventID, TransDate"            
 
             
             
-            UpdateCommand="UPDATE PlayersList SET Action = @Action, Carpool = @Carpool, Marked = @Marked, SpecialRule = @SpecialRule, GuestID = @GuestID, EventID = @EventID, PlayerID = @PlayerID WHERE (TransDate = @TransDate)">
+            UpdateCommand="UPDATE PlayersList SET Action = @Action, Carpool = @Carpool, Marked = @Marked, SpecialRule = @SpecialRule, GuestID = @GuestID, EventID = @EventID, PlayerID = @PlayerID WHERE (TransDate = @TransDate)" ProviderName="System.Data.SqlClient">
             <DeleteParameters>
                 <asp:Parameter Name="ClubID" />
                 <asp:Parameter Name="EventID" />
                 <asp:Parameter Name="PlayerID" />
             </DeleteParameters>
             <SelectParameters>
-                <asp:Parameter DefaultValue="645" Name="ClubID" />
+                <asp:Parameter DefaultValue="232" Name="ClubID" />
             </SelectParameters>
             <UpdateParameters>
                 <asp:Parameter Name="Action" Type="String" />
@@ -88,8 +88,6 @@
                 </asp:BoundField>
                 <asp:BoundField DataField="SpecialRule" HeaderText="SpecialRule" 
                     SortExpression="SpecialRule" >
-                </asp:BoundField>
-                <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" >
                 </asp:BoundField>
             </Columns>
             <EditRowStyle BackColor="#999999" />

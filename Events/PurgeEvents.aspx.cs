@@ -10,6 +10,7 @@ public partial class Events_PurgeEvents : System.Web.UI.Page
 {
     public MrTimeZone today;
     MrSchedule dbEvents { get; set; }
+    public string club { get; set; }
     public int choice;
     public int countOfEvents;
     public DateTime firstDate;
@@ -22,6 +23,7 @@ public partial class Events_PurgeEvents : System.Web.UI.Page
     {
         clubSettings = new Settings();
         clubSettings = (Settings)Session["Settings"];
+        club = clubSettings.ClubInfo.ClubName.ToString();
         LookAtEventsDB();
         if (countOfEvents == 0)
             {
@@ -104,13 +106,16 @@ public partial class Events_PurgeEvents : System.Web.UI.Page
         var query = from q in db.Events
                     where ((q.ClubID == clubSettings.ClubID) && (q.Date >= StartDate) && (q.Date <= EndDate))
                     select q;
-        foreach (var item in query)
+        if (query != null)
         {
-            vDate = item.Date;
-            db.Events.DeleteOnSubmit(item);
-            result++;
+            foreach (var item in query)
+            {
+                vDate = item.Date;
+                db.Events.DeleteOnSubmit(item);
+                result++;
+            }
+            db.SubmitChanges();
         }
-        db.SubmitChanges();
         return result;
     }
 
