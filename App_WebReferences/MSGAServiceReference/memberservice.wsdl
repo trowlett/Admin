@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://services.ngn.com/2007/03/20/MemberService" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s1="http://services.ngn.com/2007/03/20/HeaderData" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://services.ngn.com/2007/03/20/MemberData" xmlns:s3="http://services.ngn.com/2007/03/20/CommonData" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://services.ngn.com/2007/03/20/MemberService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.ngn.com/2007/03/20/MemberService">
+      <s:import namespace="http://services.ngn.com/2007/03/20/HeaderData" />
+      <s:import namespace="http://services.ngn.com/2007/03/20/MemberData" />
+      <s:import namespace="http://services.ngn.com/2007/03/20/CommonData" />
+      <s:element name="UpdateMembersRequest" type="tns:UpdateMembersRequest" />
+      <s:complexType name="UpdateMembersRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberList" type="s2:MemberList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMembersResponse" type="tns:UpdateMembersResponse" />
+      <s:complexType name="UpdateMembersResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberResponseList" type="s2:MemberResponseList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddPublicPlayerRequest" type="tns:AddPublicPlayerRequest" />
+      <s:complexType name="AddPublicPlayerRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublicPlayerList" type="s2:PublicPlayerList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddPublicPlayerResponse" type="tns:AddPublicPlayerResponse" />
+      <s:complexType name="AddPublicPlayerResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberResponseList" type="s2:MemberResponseList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpgradePublicPlayerRequest" type="tns:UpgradePublicPlayerRequest" />
+      <s:complexType name="UpgradePublicPlayerRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceUserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpgradePublicPlayerResponse" type="tns:UpgradePublicPlayerResponse" />
+      <s:complexType name="UpgradePublicPlayerResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseType" type="s3:ResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ResetPasswordEmailRequest" type="tns:ResetPasswordEmailRequest" />
+      <s:complexType name="ResetPasswordEmailRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="PasswordResetList" type="s2:PasswordResetList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PasswordResetEmailResponse" type="tns:ResetPasswordEmailResponse" />
+      <s:complexType name="ResetPasswordEmailResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResetPasswordResponseList" type="s2:ResetPasswordResponseList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateTournamentMembersRequest" type="tns:UpdateTournamentMembersRequest" />
+      <s:complexType name="UpdateTournamentMembersRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberList" type="s2:TournamentMemberList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMemberIdsRequest" type="tns:UpdateMemberIdsRequest" />
+      <s:complexType name="UpdateMemberIdsRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberIdList" type="s2:MemberIdList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMemberRosterRequest" type="tns:UpdateMemberRosterRequest" />
+      <s:complexType name="UpdateMemberRosterRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceTournamentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberRosterList" type="s2:MemberRosterList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMemberRosterResponse" type="tns:UpdateMemberRosterResponse" />
+      <s:complexType name="UpdateMemberRosterResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseType" type="s3:ResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateMemberIdsAddSourceRequest" type="tns:UpdateMemberIdsAddSourceRequest" />
+      <s:complexType name="UpdateMemberIdsAddSourceRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentSource" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberIdList" type="s2:MemberIdList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberByUserRequest" type="tns:FetchMemberByUserRequest" />
+      <s:complexType name="FetchMemberByUserRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceUserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubManagementGroupId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersResponse" type="tns:FetchMembersResponse" />
+      <s:complexType name="FetchMembersResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberList" type="s2:MemberList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchTournamentSSORequest" type="tns:FetchTournamentSSORequest" />
+      <s:complexType name="FetchTournamentSSORequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchTournamentSSOResponse" type="tns:FetchTournamentSSOResponse" />
+      <s:complexType name="FetchTournamentSSOResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TournamentSSOInfo" type="s2:SSOInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberSSOTokenRequest" type="tns:FetchMemberSSOTokenRequest" />
+      <s:complexType name="FetchMemberSSOTokenRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceUserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberSSOTokenResponse" type="tns:FetchMemberSSOTokenResponse" />
+      <s:complexType name="FetchMemberSSOTokenResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MemberSSOInfo" type="s2:SSOInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberByUsernameRequest" type="tns:FetchMemberByUsernameRequest" />
+      <s:complexType name="FetchMemberByUsernameRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberByCredentialsRequest" type="tns:FetchMemberByCredentialsRequest" />
+      <s:complexType name="FetchMemberByCredentialsRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSSO" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberByNetworkIdRequest" type="tns:FetchMemberByNetworkIdRequest" />
+      <s:complexType name="FetchMemberByNetworkIdRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubManagementGroupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LeagueId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSSO" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RevisionDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberByLocalIdRequest" type="tns:FetchMemberByLocalIdRequest" />
+      <s:complexType name="FetchMemberByLocalIdRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocalId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberByCardIdRequest" type="tns:FetchMemberByCardIdRequest" />
+      <s:complexType name="FetchMemberByCardIdRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSSO" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersBySearchRequest" type="tns:FetchMembersBySearchRequest" />
+      <s:complexType name="FetchMembersBySearchRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Region" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubManagementGroupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SuperClubManagementGroupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Clubid" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceClubId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersSearchResponse" type="tns:FetchMembersSearchResponse" />
+      <s:complexType name="FetchMembersSearchResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberSearchList" type="s2:MemberSearchList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberSourceByUserRequest" type="tns:FetchMemberSourceByUserRequest" />
+      <s:complexType name="FetchMemberSourceByUserRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="TargetSource" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMemberSourceByUserResponse" type="tns:FetchMemberSourceByUserResponse" />
+      <s:complexType name="FetchMemberSourceByUserResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MemberIdSourceInfo" type="s2:MemberIdSourceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersByClubRequest" type="tns:FetchMembersByClubRequest" />
+      <s:complexType name="FetchMembersByClubRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceClubId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActiveOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersByClubNoSourceRequest" type="tns:FetchMembersByClubNoSourceRequest" />
+      <s:complexType name="FetchMembersByClubNoSourceRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActiveOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersBySourceRequest" type="tns:FetchMembersBySourceRequest" />
+      <s:complexType name="FetchMembersBySourceRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="1" maxOccurs="1" name="FromDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ToDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActiveOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="FetchMembersWithoutSourceRequest" type="tns:FetchMembersWithoutSourceRequest" />
+      <s:complexType name="FetchMembersWithoutSourceRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credentials" type="s1:Credentials" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentSource" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.ngn.com/2007/03/20/HeaderData">
+      <s:complexType name="Credentials">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.ngn.com/2007/03/20/MemberData">
+      <s:import namespace="http://services.ngn.com/2007/03/20/CommonData" />
+      <s:complexType name="MemberList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Member" type="s2:MemberInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PasswordQuestion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PasswordAnswer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Salutation" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MiddleInitial" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NickName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HomePhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkPhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobilePhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileCarrierType" nillable="true" type="s2:MobileCarrierType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultCourseName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTeeName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultCourseId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultTeeId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultCourseHandicap" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s2:Gender" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" nillable="true" type="s:date" />
+          <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Employer" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="JobTitle" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressLine1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressLine2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="City" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Region" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostalCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountryCode" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceClubId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MembershipLevel" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubCategoryType" type="s2:ClubCategoryType" />
+          <s:element minOccurs="1" maxOccurs="1" name="MembershipType" nillable="true" type="s2:MembershipType" />
+          <s:element minOccurs="1" maxOccurs="1" name="MembershipCategory" nillable="true" type="s2:MembershipCategory" />
+          <s:element minOccurs="1" maxOccurs="1" name="TournamentTeeType" nillable="true" type="s2:TournamentTeeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Division" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReferralSource" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StrokesOverPar" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Token" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExpirationDate" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransferFromSourceClubId" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendWelcomeEmail" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OptInAllEmail" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FindPublicPlayerClub" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FriendlyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocalId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GCVendorId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BagStorageId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LockerId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsActive" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAdmin" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCardActive" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag2" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsProfilePrivate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsMemberListingPrivate" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowNotifications" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowUniqueNotifications" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowNewsletters" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AllowPrintNewsLetters" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgreedToTermsAndConditionsOn" nillable="true" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedGolfCanadaCardOn" nillable="true" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubGroupId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedOn" nillable="true" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedOn" nillable="true" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="Action" type="s2:MemberAction" />
+          <s:element minOccurs="0" maxOccurs="1" name="HandicapInfo" type="s2:ArrayOfMemberHandicapInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubGroups" type="s2:ArrayOfMemberSubgroups" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClubMemberships" type="s2:ArrayOfMemberClubMemberships" />
+        </s:sequence>
+        <s:attribute name="SourceUserId" type="s:string" />
+        <s:attribute name="TransactionId" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="MobileCarrierType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="ATT" />
+          <s:enumeration value="VerizonWireless" />
+          <s:enumeration value="TMobile" />
+          <s:enumeration value="Sprint" />
+          <s:enumeration value="NextTel" />
+          <s:enumeration value="BoostMobile" />
+          <s:enumeration value="Alltel" />
+          <s:enumeration value="USCellular" />
+          <s:enumeration value="VirginMobile" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="Gender">
+        <s:restriction base="s:string">
+          <s:enumeration value="M" />
+          <s:enumeration value="F" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ClubCategoryType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Legacy" />
+          <s:enumeration value="Partner" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MembershipType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Full Member" />
+          <s:enumeration value="Trial Member with GameTracker" />
+          <s:enumeration value="Trial Member" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MembershipCategory">
+        <s:restriction base="s:string">
+          <s:enumeration value="Junior Boys" />
+          <s:enumeration value="Junior Girls" />
+          <s:enumeration value="Senior Men" />
+          <s:enumeration value="Senior Women" />
+          <s:enumeration value="Men" />
+          <s:enumeration value="Women" />
+          <s:enumeration value="Staff" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TournamentTeeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Back" />
+          <s:enumeration value="Middle" />
+          <s:enumeration value="Forward" />
+          <s:enumeration value="Other" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MemberAction">
+        <s:restriction base="s:string">
+          <s:enumeration value="Add" />
+          <s:enumeration value="Update" />
+          <s:enumeration value="Transfer" />
+          <s:enumeration value="Archive" />
+          <s:enumeration value="Restore" />
+          <s:enumeration value="Delete" />
+          <s:enumeration value="AddMembership" />
+          <s:enumeration value="Fetch" />
+          <s:enumeration value="CancelMembership" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfMemberHandicapInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberHandicapInfo" nillable="true" type="s2:MemberHandicapInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberHandicapInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="HandicapType" type="s2:MemberHandicapType" />
+          <s:element minOccurs="1" maxOccurs="1" name="HandicapAssoc" type="s2:MemberHandicapAssoc" />
+          <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EffectiveOn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayHandicap" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suffix" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MemberHandicapType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Official" />
+          <s:enumeration value="Trend" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="MemberHandicapAssoc">
+        <s:restriction base="s:string">
+          <s:enumeration value="USGA" />
+          <s:enumeration value="RCGA" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfMemberSubgroups">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberSubgroups" nillable="true" type="s2:MemberSubgroups" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberSubgroups">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMemberClubMemberships">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberClubMemberships" nillable="true" type="s2:MemberClubMemberships" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberClubMemberships">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ClubName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RegionalAssociationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssociationName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsPrimary" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberResponseList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberResponse" type="s2:MemberResponseInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberResponseInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Action" type="s2:MemberAction" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseType" type="s3:ResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GolfCanadaCardId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FriendlyId" type="s:int" />
+        </s:sequence>
+        <s:attribute name="SourceUserId" type="s:string" />
+        <s:attribute name="TransactionId" type="s:string" />
+      </s:complexType>
+      <s:complexType name="PublicPlayerList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PublicPlayer" type="s2:PublicPlayerInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PublicPlayerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s2:Gender" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+        </s:sequence>
+        <s:attribute name="SourceUserId" type="s:string" />
+      </s:complexType>
+      <s:complexType name="PasswordResetList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PasswordReset" type="s2:PasswordResetInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PasswordResetInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Username" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmailAddress" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResetPasswordResponseList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ResetPasswordResponse" type="s2:ResetPasswordResponseInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResetPasswordResponseInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ResponseType" type="s3:ResponseType" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TournamentMemberList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Member" type="s2:TournamentMemberInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TournamentMemberInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SourceUserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TournamentClubAssocGUID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HomePhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WorkPhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobilePhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileCarrierType" nillable="true" type="s2:MobileCarrierType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s2:Gender" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" nillable="true" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressLine1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressLine2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="City" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Region" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostalCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountryCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Action" type="s2:MemberTournamentAction" />
+        </s:sequence>
+        <s:attribute name="TransactionId" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="MemberTournamentAction">
+        <s:restriction base="s:string">
+          <s:enumeration value="Add" />
+          <s:enumeration value="Update" />
+          <s:enumeration value="Fetch" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="MemberIdList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberId" type="s2:MemberIdInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberIdInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NewSourceUserId" type="s:string" />
+        </s:sequence>
+        <s:attribute name="SourceUserId" type="s:string" />
+        <s:attribute name="TransactionId" type="s:string" />
+      </s:complexType>
+      <s:complexType name="MemberRosterList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberRoster" type="s2:MemberRosterInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberRosterInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventMemberStatusType" nillable="true" type="s2:EventMemberStatusType" />
+        </s:sequence>
+        <s:attribute name="SourceUserId" type="s:string" />
+      </s:complexType>
+      <s:simpleType name="EventMemberStatusType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Participant" />
+          <s:enumeration value="Waiting" />
+          <s:enumeration value="Unpaired" />
+          <s:enumeration value="Error" />
+          <s:enumeration value="Pending" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="SSOInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MemberGUID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberSearchList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MemberSearch" type="s2:MemberSearchInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MemberSearchInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MiddleInitial" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NickName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Gender" type="s2:Gender" />
+          <s:element minOccurs="1" maxOccurs="1" name="Email" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountryCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobilePhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HomePhone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressLine1" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddressLine2" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostalCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MobileCarrierType" type="s2:MobileCarrierType" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" nillable="true" type="s:date" />
+          <s:element minOccurs="1" maxOccurs="1" name="City" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Region" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SourceUserId" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClubId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MembershipType" nillable="true" type="s2:MembershipType" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocalId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="HandicapInfo" type="s2:ArrayOfMemberHandicapInfo" />
+        </s:sequence>
+        <s:attribute name="ClubName" type="s:string" />
+        <s:attribute name="TransactionId" type="s:string" />
+      </s:complexType>
+      <s:complexType name="MemberIdSourceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SourceUserId" type="s:string" />
+        </s:sequence>
+        <s:attribute name="TargetSourceUserId" type="s:string" />
+        <s:attribute name="TransactionId" type="s:string" />
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://services.ngn.com/2007/03/20/CommonData">
+      <s:simpleType name="ResponseType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Success" />
+          <s:enumeration value="Warning" />
+          <s:enumeration value="Failure" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="UpdateMembersSoapIn">
+    <wsdl:part name="UpdateMembersRequest" element="tns:UpdateMembersRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMembersSoapOut">
+    <wsdl:part name="UpdateMembersResult" element="tns:UpdateMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPublicPlayersSoapIn">
+    <wsdl:part name="AddPublicPlayerRequest" element="tns:AddPublicPlayerRequest" />
+  </wsdl:message>
+  <wsdl:message name="AddPublicPlayersSoapOut">
+    <wsdl:part name="AddPublicPlayersResult" element="tns:AddPublicPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpgradePublicPlayerSoapIn">
+    <wsdl:part name="UpgradePublicPlayerRequest" element="tns:UpgradePublicPlayerRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpgradePublicPlayerSoapOut">
+    <wsdl:part name="UpgradePublicPlayerResult" element="tns:UpgradePublicPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendPasswordResetEmailSoapIn">
+    <wsdl:part name="ResetPasswordEmailRequest" element="tns:ResetPasswordEmailRequest" />
+  </wsdl:message>
+  <wsdl:message name="SendPasswordResetEmailSoapOut">
+    <wsdl:part name="SendPasswordResetEmailResult" element="tns:PasswordResetEmailResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTournamentMembersSoapIn">
+    <wsdl:part name="UpdateTournamnetMembersRequest" element="tns:UpdateTournamentMembersRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTournamentMembersSoapOut">
+    <wsdl:part name="UpdateTournamentMembersResult" element="tns:UpdateMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdsSoapIn">
+    <wsdl:part name="UpdateMemberIdsRequest" element="tns:UpdateMemberIdsRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdsSoapOut">
+    <wsdl:part name="UpdateMemberIdsResult" element="tns:UpdateMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberRosterSoapIn">
+    <wsdl:part name="UpdateMemberRosterRequest" element="tns:UpdateMemberRosterRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberRosterSoapOut">
+    <wsdl:part name="UpdateMemberRosterResult" element="tns:UpdateMemberRosterResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdsAddSourceSoapIn">
+    <wsdl:part name="UpdateMemberIdsAddSource" element="tns:UpdateMemberIdsAddSourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMemberIdsAddSourceSoapOut">
+    <wsdl:part name="UpdateMemberIdsAddSourceResult" element="tns:UpdateMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByUserSoapIn">
+    <wsdl:part name="FetchMembersByUserRequest" element="tns:FetchMemberByUserRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByUserSoapOut">
+    <wsdl:part name="FetchMemberByUserResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchTournamentSSOSoapIn">
+    <wsdl:part name="FetchTournamentSSORequest" element="tns:FetchTournamentSSORequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchTournamentSSOSoapOut">
+    <wsdl:part name="FetchTournamentSSOResult" element="tns:FetchTournamentSSOResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberSSOTokenSoapIn">
+    <wsdl:part name="FetchMemberSSOTokenRequest" element="tns:FetchMemberSSOTokenRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberSSOTokenSoapOut">
+    <wsdl:part name="FetchMemberSSOTokenResult" element="tns:FetchMemberSSOTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByUsernameSoapIn">
+    <wsdl:part name="FetchMemberByUsernameRequest" element="tns:FetchMemberByUsernameRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByUsernameSoapOut">
+    <wsdl:part name="FetchMemberByUsernameResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByCredentialsSoapIn">
+    <wsdl:part name="FetchMemberByCredentialsRequest" element="tns:FetchMemberByCredentialsRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByCredentialsSoapOut">
+    <wsdl:part name="FetchMemberByCredentialsResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByNetworkIdSoapIn">
+    <wsdl:part name="FetchMemberByNetworkIdRequest" element="tns:FetchMemberByNetworkIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByNetworkIdSoapOut">
+    <wsdl:part name="FetchMemberByNetworkIdResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByLocalIdSoapIn">
+    <wsdl:part name="FetchMemberByLocalIdRequest" element="tns:FetchMemberByLocalIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByLocalIdSoapOut">
+    <wsdl:part name="FetchMemberByLocalIdResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByCardIdSoapIn">
+    <wsdl:part name="FetchMemberByCardIdRequest" element="tns:FetchMemberByCardIdRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberByCardIdSoapOut">
+    <wsdl:part name="FetchMemberByCardIdResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersBySearchSoapIn">
+    <wsdl:part name="FetchMembersBySearchRequest" element="tns:FetchMembersBySearchRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersBySearchSoapOut">
+    <wsdl:part name="FetchMembersBySearchResult" element="tns:FetchMembersSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberSourceByUserSoapIn">
+    <wsdl:part name="FetchMemberSourceByUserRequest" element="tns:FetchMemberSourceByUserRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMemberSourceByUserSoapOut">
+    <wsdl:part name="FetchMemberSourceByUserResult" element="tns:FetchMemberSourceByUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersByClubSoapIn">
+    <wsdl:part name="FetchMembersByClubRequest" element="tns:FetchMembersByClubRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersByClubSoapOut">
+    <wsdl:part name="FetchMembersByClubResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersByClubNoSourceSoapIn">
+    <wsdl:part name="FetchMembersByClubNoSourceRequest" element="tns:FetchMembersByClubNoSourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersByClubNoSourceSoapOut">
+    <wsdl:part name="FetchMembersByClubNoSourceResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersBySourceSoapIn">
+    <wsdl:part name="FetchMembersBySourceRequest" element="tns:FetchMembersBySourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersBySourceSoapOut">
+    <wsdl:part name="FetchMembersBySourceResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersWithoutSourceSoapIn">
+    <wsdl:part name="FetchMembersWithoutSourceRequest" element="tns:FetchMembersWithoutSourceRequest" />
+  </wsdl:message>
+  <wsdl:message name="FetchMembersWithoutSourceSoapOut">
+    <wsdl:part name="FetchMembersWithoutSourceResult" element="tns:FetchMembersResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MemberService">
+    <wsdl:operation name="UpdateMembers">
+      <wsdl:input message="tns:UpdateMembersSoapIn" />
+      <wsdl:output message="tns:UpdateMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPublicPlayers">
+      <wsdl:input message="tns:AddPublicPlayersSoapIn" />
+      <wsdl:output message="tns:AddPublicPlayersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpgradePublicPlayer">
+      <wsdl:input message="tns:UpgradePublicPlayerSoapIn" />
+      <wsdl:output message="tns:UpgradePublicPlayerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPasswordResetEmail">
+      <wsdl:input message="tns:SendPasswordResetEmailSoapIn" />
+      <wsdl:output message="tns:SendPasswordResetEmailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTournamentMembers">
+      <wsdl:input message="tns:UpdateTournamentMembersSoapIn" />
+      <wsdl:output message="tns:UpdateTournamentMembersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIds">
+      <wsdl:input message="tns:UpdateMemberIdsSoapIn" />
+      <wsdl:output message="tns:UpdateMemberIdsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberRoster">
+      <wsdl:input message="tns:UpdateMemberRosterSoapIn" />
+      <wsdl:output message="tns:UpdateMemberRosterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdsAddSource">
+      <wsdl:input message="tns:UpdateMemberIdsAddSourceSoapIn" />
+      <wsdl:output message="tns:UpdateMemberIdsAddSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByUser">
+      <wsdl:input message="tns:FetchMemberByUserSoapIn" />
+      <wsdl:output message="tns:FetchMemberByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchTournamentSSO">
+      <wsdl:input message="tns:FetchTournamentSSOSoapIn" />
+      <wsdl:output message="tns:FetchTournamentSSOSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberSSOToken">
+      <wsdl:input message="tns:FetchMemberSSOTokenSoapIn" />
+      <wsdl:output message="tns:FetchMemberSSOTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByUsername">
+      <wsdl:input message="tns:FetchMemberByUsernameSoapIn" />
+      <wsdl:output message="tns:FetchMemberByUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByCredentials">
+      <wsdl:input message="tns:FetchMemberByCredentialsSoapIn" />
+      <wsdl:output message="tns:FetchMemberByCredentialsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByNetworkId">
+      <wsdl:input message="tns:FetchMemberByNetworkIdSoapIn" />
+      <wsdl:output message="tns:FetchMemberByNetworkIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByLocalId">
+      <wsdl:input message="tns:FetchMemberByLocalIdSoapIn" />
+      <wsdl:output message="tns:FetchMemberByLocalIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByCardId">
+      <wsdl:input message="tns:FetchMemberByCardIdSoapIn" />
+      <wsdl:output message="tns:FetchMemberByCardIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersBySearch">
+      <wsdl:input message="tns:FetchMembersBySearchSoapIn" />
+      <wsdl:output message="tns:FetchMembersBySearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberSourceByUser">
+      <wsdl:input message="tns:FetchMemberSourceByUserSoapIn" />
+      <wsdl:output message="tns:FetchMemberSourceByUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersByClub">
+      <wsdl:input message="tns:FetchMembersByClubSoapIn" />
+      <wsdl:output message="tns:FetchMembersByClubSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersByClubNoSource">
+      <wsdl:input message="tns:FetchMembersByClubNoSourceSoapIn" />
+      <wsdl:output message="tns:FetchMembersByClubNoSourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersBySource">
+      <wsdl:input message="tns:FetchMembersBySourceSoapIn" />
+      <wsdl:output message="tns:FetchMembersBySourceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersWithoutSource">
+      <wsdl:input message="tns:FetchMembersWithoutSourceSoapIn" />
+      <wsdl:output message="tns:FetchMembersWithoutSourceSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MemberService" type="tns:MemberService">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UpdateMembers">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/UpdateMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPublicPlayers">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/AddPublicPlayers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpgradePublicPlayer">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/UpgradePublicPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendPasswordResetEmail">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/SendPasswordResetEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTournamentMembers">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/UpdateTournamentMembers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIds">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/UpdateMemberIds" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberRoster">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/UpdateMemberRoster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMemberIdsAddSource">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/UpdateMemberIdsAddSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByUser">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchTournamentSSO">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchTournamentSSO" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberSSOToken">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberSSOToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByUsername">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByCredentials">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberByCredentials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByNetworkId">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberByNetworkId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByLocalId">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberByLocalId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberByCardId">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberByCardId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersBySearch">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMembersBySearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMemberSourceByUser">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMemberSourceByUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersByClub">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMembersByClub" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersByClubNoSource">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMembersByClubNoSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersBySource">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMembersBySource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchMembersWithoutSource">
+      <soap:operation soapAction="http://services.ngn.com/2007/03/20/MemberService/FetchMembersWithoutSource" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MemberService">
+    <wsdl:port name="MemberService" binding="tns:MemberService">
+      <soap:address location="http://services.golfnet.com/memberservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

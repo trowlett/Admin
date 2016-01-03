@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://services.golfnet.com/memberservice.asmx?wsdl" docRef="http://services.golfnet.com/memberservice.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://services.golfnet.com/memberservice.asmx" xmlns:q1="http://services.ngn.com/2007/03/20/MemberService" binding="q1:MemberService" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>
