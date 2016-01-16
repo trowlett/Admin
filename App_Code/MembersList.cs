@@ -166,9 +166,9 @@ public class MembersList
                     {
                         clubID = clubID,
                         pID = Convert.ToInt32(fields[0]),
-                        name = fields[1].ToUpper(),
-                        lname = fields[2],
-                        fname = fields[3],
+                        name = StripQuotes(fields[1].ToUpper()),
+                        fname = fields[2],
+                        lname = fields[3],
                         hcp = fields[4],
                         memberNumber = fields[5],
                         gender = Convert.ToInt32(fields[6]),
@@ -186,6 +186,16 @@ public class MembersList
         return target;
 
     }
+    private static string StripQuotes(string item)
+    {
+        char quote = '\"';
+        // Determine whether a tag begins the string.
+        item = item.TrimEnd(quote);
+        item = item.TrimStart(quote);
+
+        return item;
+    }
+
 	public MembersList()
 	{
         _count = 0;
