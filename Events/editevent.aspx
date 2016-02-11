@@ -48,7 +48,7 @@
 				<th class="playerlimit">Player Limit</th>
 				<th class="edeadlinecol">Deadline</th>
                 <th class="epostdatecol">Posting Date</th>
-                <th class="specialRuleCol">Special Rule</th>
+                <th class="specialRuleCol">Tee Choice Options</th>
                 <th class="deadlinecol">Guest</th>
 			</tr>
             <tr>

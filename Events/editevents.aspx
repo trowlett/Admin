@@ -68,7 +68,7 @@
                 <HeaderStyle HorizontalAlign="Center" />
                 <ItemStyle HorizontalAlign="Left" />
                 </asp:BoundField>
-                <asp:BoundField DataField="SpecialRule" HeaderText="Special Rule" 
+                <asp:BoundField DataField="SpecialRule" HeaderText="Tee Choice" 
                     SortExpression="SpecialRule">
                 <HeaderStyle HorizontalAlign="Center" Width="40px" />
                 <ItemStyle HorizontalAlign="Left" />

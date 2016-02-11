@@ -123,3 +123,11 @@
 	width: 100px;
 	text-align: center;
 }
+.current {
+    background-color: lightgreen;
+    color: black;
+}
+.update {
+    background-color: lightpink;
+    color: black;
+}

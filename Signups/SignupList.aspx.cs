@@ -91,9 +91,9 @@ public partial class Signups_SignupList : System.Web.UI.Page
         sourceBodyText.Text = "List of " + playerCount.ToString() + " " + clubSettings.ClubInfo.OrgName;
         sourceBodyText.Text += " players and their handicap indexes to play in the mixer on ";
         sourceBodyText.Text += evDate +" at " + hostClub + Environment.NewLine + Environment.NewLine;
-        if (females > 0)
+/*        if (females > 0)
             sourceBodyText.Text += "Players marked with an [F] are female." + Environment.NewLine + Environment.NewLine;
-
+*/
         string spcRule = "";
         if (mixer.SpecialRule != null)
         {

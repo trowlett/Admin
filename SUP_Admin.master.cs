@@ -121,8 +121,10 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                     MenuItem settingsMenuItem = new MenuItem("Settings", "Settings");
                     MenuItem clubsSubMenuItem = new MenuItem("Clubs", "Clubs", "", "~/Clubs/Clubsmain.aspx");
                     MenuItem usersSubMenuItem = new MenuItem("Users", "Users", "", "~/User/usermain.aspx");
+                    MenuItem changeClubSubMenuItem = new MenuItem("Change Club", "Change Club", "", "~/Clubs/ChangeClub.aspx");
                     settingsMenuItem.ChildItems.Add(clubsSubMenuItem);
                     settingsMenuItem.ChildItems.Add(usersSubMenuItem);
+                    settingsMenuItem.ChildItems.Add(changeClubSubMenuItem);
 //                    utilitiesMenuItem.ChildItems.Add(settingsMenuItem);
                     navigationMenu.Items.Add(settingsMenuItem);
                 }

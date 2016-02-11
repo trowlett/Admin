@@ -268,14 +268,23 @@ public partial class Events_addevent : System.Web.UI.Page
             }
         }
         Event.ECost = (cbCash.Checked) ? Event.ECost + "*" : Event.ECost;
+        int pl = 0;
         if (tbPlayerLimit.Text == "")
         {
-            Event.EPlayerLimit = 0;
+            pl = 0;
         }
         else
         {
-            Event.EPlayerLimit = Convert.ToInt32(tbPlayerLimit.Text);
+            try
+            {
+                pl = Convert.ToInt32(tbPlayerLimit.Text);
+            }
+            catch (FormatException ex)
+            {
+                pl = 60;
+            }
         }
+        Event.EPlayerLimit = pl;
         Event.EDeadline = Deadline;
         Event.EPostDate = PostDate;
         Event.EHostPhone = clubSettings.ClubInfo.ProPhone;

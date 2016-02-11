@@ -190,7 +190,16 @@ public partial class Events_editevent : System.Web.UI.Page
         ev.Cost = tbEditCost.Text;
         ev.Deadline = Convert.ToDateTime(tbEditDeadline.Text);
         ev.Guest = tbEditGuest.Text;
-        ev.PlayerLimit = Convert.ToInt32(tbEditPlayerLimit.Text);
+        int pl = 0;
+        try
+        {
+            pl = Convert.ToInt32(tbEditPlayerLimit.Text);
+        }
+        catch (FormatException ex)
+        {
+            pl = 60;
+        }
+        ev.PlayerLimit = pl;
         ev.PostDate = Convert.ToDateTime(tbEditPost.Text);
         ev.SpecialRule = tbEditSR.Text;
         db.SubmitChanges();

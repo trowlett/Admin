@@ -18,7 +18,7 @@
         <h2>Site Maintenace Main Page</h2></td>
     <td>
         <h4 style="text-align: right;"> 
-            January 1, 2016
+            January 20, 2016
         Update
         </h4></td></tr></table>
     <div id="welcome">

@@ -107,7 +107,7 @@
             </tr>
             <tr>
                 
-                <td class="auto-style1">Special Rule:</td>
+                <td class="auto-style1">Tee Choice Options:</td>
                 <td><asp:TextBox ID="tbSpecialRule" runat="server" TabIndex="8"></asp:TextBox></td>
                 <td></td>
                 <td></td>
