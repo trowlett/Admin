@@ -36,13 +36,13 @@ public class SignupList
         var plist =
             from px in db.Players
             where px.ClubID == clubID
-            select new { px.ClubID, px.PlayerID, px.Name, px.LName, px.FName, px.Sex, px.Hcp, px.Title };
+            select new { px.ClubID, px.PlayerID, px.Name, px.LName, px.FName, px.Sex, px.Hcp, px.Title, px.HDate };
 		var slist =
 			from pl in db.PlayersList
 			join pn in plist on pl.PlayerID equals pn.PlayerID
 			where pl.EventID == EventID && pl.Marked == 0
 			orderby pl.TransDate
-			select new { pl.TransDate, pl.EventID, pl.PlayerID, pn.Name, pn.Sex, pn.Hcp, pl.Action, pl.Carpool, pl.Marked, pl.SpecialRule, pl.GuestID };
+			select new { pl.TransDate, pl.EventID, pl.PlayerID, pn.Name, pn.Sex, pn.Hcp, pn.HDate, pl.Action, pl.Carpool, pl.Marked, pl.SpecialRule, pl.GuestID };
 		int seqNo = 0;
 
 		foreach (var item in slist)
@@ -55,6 +55,7 @@ public class SignupList
                 SPlayerID = item.PlayerID,
 				Splayer = item.Name,
 				Shcp = item.Hcp,
+                SHDate = item.HDate,
 				Saction= item.Action,
 				Scarpool = item.Carpool,
 				Smarked= item.Marked,

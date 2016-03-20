@@ -106,9 +106,18 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
 		</asp:ScriptManager>
 	<div>
+        <table style="width: 100%;">
+    <tr>
+    <td style="width: 70%;">
 	<h2>
 	Prepare Event Players List
 	</h2>
+        </td>
+    <td>
+        <h4 style="text-align: right;"> 
+            March 16, 2016
+        Update
+        </h4></td></tr></table>
 
    <asp:Label ID="emailSuccess" runat="server" Text="Email Sent Successfully" ForeColor="Red" Font-Size="Large" Visible="False"></asp:Label>
 
@@ -139,6 +148,8 @@
 <asp:Panel ID="Panel1" runat="server" HorizontalAlign="Center" Width="90%">
 	<asp:Label ID="lblCount" runat="server" Text="Label"></asp:Label>
 	<br />
+    <asp:Label ID="lblHcpOld" runat="server" Text="Indicates Handicap NOT current." CssClass="update" Visible="False"></asp:Label>
+    <br />
 <div class="players_list">
 		<asp:Repeater ID="PlayersListRepeater" runat="server">
 		<ItemTemplate>
@@ -149,7 +160,8 @@
 				<th class="name">Name</th>
 				<th class="gender">Gender</th>
 				<th class="hcp">Hcp. Index</th>
-				<th class="srule">Rule</th>
+                <th class="hcpdate">Hcp. Date</th>
+				<th class="srule">Tee</th>
 <!--				<th class="action">Action</th> -->
 				<th class="carpool">Carpool</th>
 <!--				<th class="marked">Marked</th> -->
@@ -160,12 +172,13 @@
 
 			   <asp:Repeater ID="Repeater1"  runat="server" DataSource='<%# Eval("Entries") %>'>
 			   <ItemTemplate>
-			   <tr>
+				<tr class="<%# ((SignupEntry)Container.DataItem).IsHandicapCurrent() %>">
 					<td class="seqno"><%# ((SignupEntry)Container.DataItem).SeqNo %></td>
 					<td class="timestamp"><%# ((SignupEntry)Container.DataItem).STDate.ToShortDateString() %></td>
 					<td class="name"><%# ((SignupEntry)Container.DataItem).Splayer %></td>
 					<td class="gender"><%# ((SignupEntry)Container.DataItem).Ssex %></td>
 					<td class="hcp"><%# ((SignupEntry)Container.DataItem).Shcp %></td>
+                   <td class="hcpdate"><%# ((SignupEntry)Container.DataItem).SHDate.ToString("MM/dd/yy") %></td>
 					<td class="srule"><%# ((SignupEntry)Container.DataItem).SspecialRule %></td>
 <!--					<td class="action"><%# ((SignupEntry)Container.DataItem).Saction %></td> -->
 					<td class="carpool"><%# ((SignupEntry)Container.DataItem).Scarpool %></td>

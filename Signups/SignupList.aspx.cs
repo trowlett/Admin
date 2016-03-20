@@ -269,6 +269,7 @@ public partial class Signups_SignupList : System.Web.UI.Page
                 lblCount.Text += string.Format("There are {0} players for this event.", sl.Entries.Count.ToString());
             }
         }
+        lblHcpOld.Visible = true;
         LoadEmailBody(eid);
 
         ShowControls(true);
