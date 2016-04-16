@@ -34,7 +34,10 @@ public class SignupEntry
         DateTime now = etz.eastTimeNow();
         int day = now.Day < 15 ? 1 : 15;
         DateTime begin = new DateTime(now.Year, now.Month, day, 0, 0, 0);
-        int lastDay = (day == 1) ? 14 : now.AddMonths(1).AddDays(-1).Day;
+        DateTime nextMonth = now.AddMonths(1);
+        DateTime BegNextMonth = new DateTime(nextMonth.Year, nextMonth.Month, 1);
+        int endMonth = BegNextMonth.AddDays(-1).Day;
+        int lastDay = (day == 1) ? 14 : endMonth;
         DateTime end = new DateTime(now.Year, now.Month, lastDay, 23, 59, 59);
         if ((this.SHDate >= begin) && (this.SHDate <= end))
         {
