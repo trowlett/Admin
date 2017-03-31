@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 
-<% DateModified = "January 26, 2015"; %>
+<% DateModified = "March 20, 2017"; %>
 
     <style type="text/css">
         .auto-style1 {
@@ -64,10 +64,7 @@
                 <td style="font-weight: bold">Event Fee:</td>
                 <td><asp:TextBox ID="tbCost" runat="server" Width="50px" 
                     TabIndex="3"></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="revCost" runat="server" 
-                            ErrorMessage="Entry Fee must be numeric or TBD.  If not started with $, one will be inserted." 
-                            ValidationExpression="^\d*(\.\d{2,})?(tbd)?(TBD)?$" 
-                            ControlToValidate="tbCost" ForeColor="Red">@</asp:RegularExpressionValidator>
+                    
 
                     </td>
                 <td>

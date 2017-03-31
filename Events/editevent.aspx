@@ -29,7 +29,7 @@
 }
 </style>
    
-      <% DateModified = "January 26, 2015"; %>
+      <% DateModified = "March 20, 2017"; %>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -55,7 +55,7 @@
                 <td class="edatecol"><asp:TextBox ID="tbEditDate" runat="server" Text="date" Width="120px"></asp:TextBox></td>
                 <td class="hacol" runat="server"><asp:TextBox ID="tbEditha" runat="server" Text="h/a" Width="45px"></asp:TextBox></td>
                 <td class="hostcol" runat="server"><asp:TextBox ID="tbEditHost" runat="server" Text="host" Width="30px"></asp:TextBox></td>
-                <td class="costcol" runat="server"><asp:TextBox ID="tbEditCost" runat="server" Text="fee" Width="35px"></asp:TextBox></td>
+                <td class="costcol" runat="server"><asp:TextBox ID="tbEditCost" runat="server" Text="fee" Width="50px"></asp:TextBox></td>
                 <td class="timecol" runat="server"><asp:TextBox ID="tbEditTime" runat="server" Text="time" Width="55px"></asp:TextBox></td>
                 <td class="playerlimit" runat="server"><asp:TextBox ID="tbEditPlayerLimit" runat="server" Text="limit" Width="20px"></asp:TextBox></td>
                 <td class="edeadlinecol" runat="server"><asp:TextBox ID="tbEditDeadline" runat="server" Text="deadline" Width="120px"></asp:TextBox></td>

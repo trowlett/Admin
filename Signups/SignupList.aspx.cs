@@ -19,6 +19,7 @@ public partial class Signups_SignupList : System.Web.UI.Page
     private int females;
     private bool haveGuestEvent = false;
     private int playerCount = 0;
+    private int msgRowCount;
     Settings clubSettings;
 
     protected void ShowControls(bool show)
@@ -81,6 +82,7 @@ public partial class Signups_SignupList : System.Web.UI.Page
             hostClub = mixer.Title;
         }
         bool haveFemale = false;
+        msgRowCount = 0;
         literalOrg.Text = clubSettings.ClubInfo.OrgName;
         literalRep.Text = clubSettings.ClubInfo.RepName;
         literalRepEmail.Text = clubSettings.ClubInfo.RepEmail;
@@ -91,6 +93,7 @@ public partial class Signups_SignupList : System.Web.UI.Page
         sourceBodyText.Text = "List of " + playerCount.ToString() + " " + clubSettings.ClubInfo.OrgName;
         sourceBodyText.Text += " players and their handicap indexes to play in the mixer on ";
         sourceBodyText.Text += evDate +" at " + hostClub + Environment.NewLine + Environment.NewLine;
+        msgRowCount = 4;
 /*        if (females > 0)
             sourceBodyText.Text += "Players marked with an [F] are female." + Environment.NewLine + Environment.NewLine;
 */
@@ -226,15 +229,21 @@ public partial class Signups_SignupList : System.Web.UI.Page
                 msgBody += string.Format("   --   Guest: {0}{1}, {2}", gFirstLast, gsex, ghcp);
             }
             msgBody += "\r\n";
+            msgRowCount++;
         }
         if (haveFemale)
+        {
             sourceBodyText.Text += "Players marked with an [F] are female." + "\r\r\n";
+            msgRowCount += 2;
+        }
 
         sourceBodyText.Text += msgBody + "\r\n";
         sourceBodyText.Text += "(Rep) is MISGA Representative; (AR) is Assistant Representative";
         sourceBodyText.Text += "\r\r\n";
         sourceBodyText.Text += literalRep.Text + ", " + literalOrg.Text + " Rep" + "\r\n";
         sourceBodyText.Text += literalRepEmail.Text + "\r\n";
+        msgRowCount += 4;
+        sourceBodyText.Rows = msgRowCount;
     }
 
     protected void LoadButton_Click(object sender, EventArgs e)
