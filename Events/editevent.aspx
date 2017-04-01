@@ -52,23 +52,23 @@
                 <th class="deadlinecol">Guest</th>
 			</tr>
             <tr>
-                <td class="edatecol"><asp:TextBox ID="tbEditDate" runat="server" Text="date" Width="120px"></asp:TextBox></td>
-                <td class="hacol" runat="server"><asp:TextBox ID="tbEditha" runat="server" Text="h/a" Width="45px"></asp:TextBox></td>
-                <td class="hostcol" runat="server"><asp:TextBox ID="tbEditHost" runat="server" Text="host" Width="30px"></asp:TextBox></td>
-                <td class="costcol" runat="server"><asp:TextBox ID="tbEditCost" runat="server" Text="fee" Width="50px"></asp:TextBox></td>
-                <td class="timecol" runat="server"><asp:TextBox ID="tbEditTime" runat="server" Text="time" Width="55px"></asp:TextBox></td>
-                <td class="playerlimit" runat="server"><asp:TextBox ID="tbEditPlayerLimit" runat="server" Text="limit" Width="20px"></asp:TextBox></td>
-                <td class="edeadlinecol" runat="server"><asp:TextBox ID="tbEditDeadline" runat="server" Text="deadline" Width="120px"></asp:TextBox></td>
-                <td class="epostdatecol" runat="server"><asp:TextBox ID="tbEditPost" runat="server" Text="post" Width="120px"></asp:TextBox></td>
-                <td class="specialRuleCol" runat="server"><asp:TextBox ID="tbEditSR" runat="server" Text="special rule" Width="80px"></asp:TextBox></td>
-                <td class="deadlinecol" runat="server"><asp:TextBox ID="tbEditGuest" runat="server" Text="guest" Width="50px"></asp:TextBox></td>
+                <td class="edatecol"><asp:TextBox ID="tbEditDate" runat="server" Text="date" Width="120px" ToolTip="Edit Date and Time of Event"></asp:TextBox></td>
+                <td class="hacol" runat="server"><asp:TextBox ID="tbEditha" runat="server" Text="h/a" Width="45px" ToolTip="Edit Event Type:  Home; Away; Club; or MISGA"></asp:TextBox></td>
+                <td class="hostcol" runat="server"><asp:TextBox ID="tbEditHost" runat="server" Text="host" Width="30px" ToolTip="Edit Host Club ID"></asp:TextBox></td>
+                <td class="costcol" runat="server"><asp:TextBox ID="tbEditCost" runat="server" Text="fee" Width="50px" ToolTip="Edit Event Fee"></asp:TextBox></td>
+                <td class="timecol" runat="server"><asp:TextBox ID="tbEditTime" runat="server" Text="time" Width="55px" ToolTip="Edit Event Time"></asp:TextBox></td>
+                <td class="playerlimit" runat="server"><asp:TextBox ID="tbEditPlayerLimit" runat="server" Text="limit" Width="20px" ToolTip="Edit Player Limt"></asp:TextBox></td>
+                <td class="edeadlinecol" runat="server"><asp:TextBox ID="tbEditDeadline" runat="server" Text="deadline" Width="120px" ToolTip="Edit Deadline Date and Time"></asp:TextBox></td>
+                <td class="epostdatecol" runat="server"><asp:TextBox ID="tbEditPost" runat="server" Text="post" Width="120px" ToolTip="Edit Posting Date and Time"></asp:TextBox></td>
+                <td class="specialRuleCol" runat="server"><asp:TextBox ID="tbEditSR" runat="server" Text="special rule" Width="80px" ToolTip="Edit Tee Choices if any"></asp:TextBox></td>
+                <td class="deadlinecol" runat="server"><asp:TextBox ID="tbEditGuest" runat="server" Text="guest" Width="50px" ToolTip="Edit Partner for Two Man or Guest "></asp:TextBox></td>
             </tr>
             </table>
         <br />
         <table>
             <tr>
 				<td class="bold">Title / Club:&nbsp;&nbsp;</td>
-                <td class="titlecol" runat="server"><asp:TextBox ID="tbEditTitle" runat="server" Text="title" Width="800px"></asp:TextBox></td>
+                <td class="titlecol" runat="server"><asp:TextBox ID="tbEditTitle" runat="server" Text="title" Width="800px" ToolTip="Event Title"></asp:TextBox></td>
             </tr>
         </table>
         <br />

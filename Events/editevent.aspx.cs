@@ -144,14 +144,15 @@ public partial class Events_editevent : System.Web.UI.Page
             throw new InvalidOperationException(msg);
         }
         tbEditDate.Text = ev.Date.ToString(formatDate);
-        tbEditDate.Enabled = false;
-        tbEditDate.ToolTip = "Cannot edit date. Delete Event and add event with new date.";
+//        tbEditDate.Text = ev.Date.ToString("MM/dd/yyyy");
+        tbEditDate.Enabled = true;
+//        tbEditDate.ToolTip = "Edit date.";
         tbEditHost.Text = ev.HostID;
-        tbEditHost.Enabled = false;
-        tbEditHost.ToolTip = "Cannot edit Host ID.  Delete event and add new event with correct Host ID.";
+        tbEditHost.Enabled = true;
+//        tbEditHost.ToolTip = "Edit Host ID.";
         tbEditTime.Text = ev.Date.ToShortTimeString();
-        tbEditTime.Enabled = false;
-        tbEditTime.ToolTip = "Cannot edit Time.  Delete event and add new event with correct time.";
+        tbEditTime.Enabled = true;
+//        tbEditTime.ToolTip = "Edit Time.";
         tbEditTitle.Text = ev.Title.Trim();
         tbEditha.Text = ev.Type.Trim();
         tbEditCost.Text = ev.Cost.Trim();
