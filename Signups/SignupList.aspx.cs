@@ -289,7 +289,7 @@ public partial class Signups_SignupList : System.Web.UI.Page
     protected bool loadDDL()
     {
         string closed = "";
-        string keyLastDate = "LastDate";
+//        string keyLastDate = "LastDate";
         string keyShowDays = "ShowDays";
         int daysToShow;
         MrTimeZone etz = new MrTimeZone();
@@ -297,7 +297,12 @@ public partial class Signups_SignupList : System.Web.UI.Page
         DateTime date2 = new DateTime(2012, 1, 1, 0, 0, 0);
         TimeSpan oneWeek = date1.Subtract(date2);
         DateTime nowDate = etz.eastTimeNow();
-
+//
+//  4/23/2017   changed code so that last date parameter value is not retrieved.
+//              This was done to avoid problem encountered because the year had changed
+//              but the date in the Last Date parameter had not been updated to the next
+//              year.   tmr
+//
         DateTime startDate = nowDate;       // .Subtract(oneWeek);
         string MRMISGADBConn = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
         MRMISGADB db = new MRMISGADB(MRMISGADBConn);
@@ -308,11 +313,13 @@ public partial class Signups_SignupList : System.Web.UI.Page
         if (dts != null) daysToShow = Convert.ToInt32((string)dts.Value);
         DateTime endDate = nowDate.AddDays(daysToShow);
         DateTime lastDate = endDate;
+        /*
         MRParams entry = db.MRParams.FirstOrDefault(p => p.ClubID == clubSettings.ClubID && p.Key == keyLastDate);
         if (entry != null)
         {
             lastDate = Convert.ToDateTime((string)entry.Value);
         }
+        */
         if (lastDate < endDate)
         {
             endDate = lastDate;

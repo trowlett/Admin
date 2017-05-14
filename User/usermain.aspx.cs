@@ -12,6 +12,7 @@ public partial class User_usermain : System.Web.UI.Page
 {
     public const string formatDate = "M/d/yy";
     public DateTime ChangeDateNow { get; set; }
+    public const char Bell = (char)7;
 
 
     protected void Page_Load(object sender, EventArgs e)
@@ -28,22 +29,35 @@ public partial class User_usermain : System.Web.UI.Page
     protected void FormView1_ItemInserting(object sender, FormViewInsertEventArgs e)
     {
         MessageLabel.Text = "";
+        string clubDB = ConfigurationManager.ConnectionStrings["ClubsConnect"].ToString();
+        MRMISGADB cdb = new MRMISGADB(clubDB);
+        // 
+        // Check for valid Club ID
+        //
+        string tmpClubID = e.Values["ClubID"].ToString().Trim();
+        var cb = cdb.Clubs.FirstOrDefault(c => c.ClubID.ToString().Trim() == tmpClubID);
+        if (cb == null)
+        {
+            MessageLabel.Text += Bell + string.Format("Club ID [{0}] undefined.  Try again.", tmpClubID);
+            e.Cancel = true;
+            return;
+        }
         if (e.Values["UserID"].ToString().Equals(""))
         {
             MessageLabel.Text += "Please enter a User ID<br />";
             e.Cancel = true;
         }
         string newUserID = e.Values["UserID"].ToString().Trim();
+        string sdbc = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
+        MRMISGADB db = new MRMISGADB(sdbc);
         //
         // look for user id already used
         // if so, error message and cancel operation
         //
-        string sdbc = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
-        MRMISGADB db = new MRMISGADB(sdbc);
         var cs = db.Users.FirstOrDefault(c => c.UserID.ToLower().Trim() == newUserID.ToLower());
         if (cs != null)
         {
-            MessageLabel.Text += string.Format("User ID [{0}] already used. Try another.",newUserID);
+            MessageLabel.Text += Bell+ string.Format("User ID [{0}] already used. Try another.",newUserID);
             e.Cancel = true;
             return;
         }

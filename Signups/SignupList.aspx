@@ -114,10 +114,10 @@
 	</h2>
         </td>
     <td>
-        <h4 style="text-align: right;"> 
-            March 24, 2017 
+        <p style="text-align: right; font-size: x-small;"> 
+            April 23, 2017 
         Update
-        </h4></td></tr></table>
+        </p></td></tr></table>
 
    <asp:Label ID="emailSuccess" runat="server" Text="Email Sent Successfully" ForeColor="Red" Font-Size="Large" Visible="False"></asp:Label>
 

@@ -5,7 +5,7 @@
     <link href="../Styles/memberslist.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-
+    <p style="width: 100%; text-align: right; font-size: small;">April 15, 2017</p>
 <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
 
@@ -51,7 +51,7 @@
 
 
 			<ItemTemplate>
-				<tr class="<%# ((MrMember)Container.DataItem).IsHandicapCurrent() %>">
+				<tr class="<%# ((MrMember)Container.DataItem).IsHandicapCurrent(BeginPeriod, EndPeriod) %>">
 					<td class="pbutton"><asp:Button ID="Button4" runat="server" Text="edit" CommandArgument='<%# ((MrMember)Container.DataItem).pID %>' /></td>
 					<td class="pid"><%# ((MrMember)Container.DataItem).pID %></td>
 					<td class="mname"><%# ((MrMember)Container.DataItem).name %></td>

@@ -150,6 +150,9 @@ public partial class Events_addevent : System.Web.UI.Page
         EventTitle = hostClubName;
         EventTitle = tbAwayTitle.Text;
         newEvent.ETitle = EventTitle;
+        ClubInfo ci = new ClubInfo();
+        ci = ClubManager.GetSetting(hostClubID);
+        newEvent.EHostPhone = ci.ProPhone;
         Session["Event"] = newEvent;
         btnSave.BackColor = Color.Green;
         btnSave.Visible = true;
@@ -161,6 +164,8 @@ public partial class Events_addevent : System.Web.UI.Page
         visitingClubID = ddlVisit1.SelectedValue.Trim();
         visitingClubName = ddlVisit1.SelectedItem.Text.Trim();
         hostClubID = clubID;
+        ClubInfo ci = new ClubInfo();
+        ci = ClubManager.GetSetting(hostClubID);
         if (tbHomeTitle.Text == "")
         {
             tbHomeTitle.Text += visitingClubName;
@@ -176,6 +181,7 @@ public partial class Events_addevent : System.Web.UI.Page
         }
         newEvent.EHostID = hostClubID;
         newEvent.ETitle = tbHomeTitle.Text;
+        newEvent.EHostPhone = ci.ProPhone;
         btnSave.Visible = true;
         btnSave.BackColor = Color.Green;
         btnSave.Enabled = true;
@@ -250,25 +256,11 @@ public partial class Events_addevent : System.Web.UI.Page
         Event.EType = newEvent.EType;
         Event.EHostID = hostClubID;
         Event.ETitle = newEvent.ETitle;
-        string tCost = tbCost.Text.Trim();
-        if (tCost.Length == 0)
-        {
-            tCost = "tbd";
-            Event.ECost= "tbd";
-        }
-        else
-        {
-            if (tCost.ToUpper() == "TBD")
-            {
-                Event.ECost = tCost;
-            }
-            else
-            {
-                Event.ECost = (tCost.Substring(0, 1).Equals("$")) ? tCost.Trim() : "$" + tCost;
-            }
-        }
-        Event.ECost = (cbCash.Checked) ? Event.ECost + "*" : Event.ECost;
-        int pl = 0;
+//        string tCost = tbCost.Text.Trim();
+        string tCost = Verify.Cost(tbCost.Text.Trim());
+        Event.ECost = (cbCash.Checked) ? tCost + "*" : tCost;
+
+/*        int pl = 0;
         if (tbPlayerLimit.Text == "")
         {
             pl = 0;
@@ -284,7 +276,8 @@ public partial class Events_addevent : System.Web.UI.Page
                 pl = 60;
             }
         }
-        Event.EPlayerLimit = pl;
+        */
+        Event.EPlayerLimit = Verify.PlayerLimit(tbPlayerLimit.Text);
         Event.EDeadline = Deadline;
         Event.EPostDate = PostDate;
         Event.EHostPhone = clubSettings.ClubInfo.ProPhone;
@@ -311,6 +304,9 @@ public partial class Events_addevent : System.Web.UI.Page
         tbMISGATitle.Text = EventTitle;
         newEvent.EHostID = hostClubID;
         newEvent.ETitle = EventTitle;
+        ClubInfo ci = new ClubInfo();
+        ci = ClubManager.GetSetting(hostClubID);
+        newEvent.EHostPhone = ci.ProPhone;
         Session["Event"] = newEvent;
         btnSave.BackColor = Color.Green;
         btnSave.Visible = true;
@@ -329,6 +325,9 @@ public partial class Events_addevent : System.Web.UI.Page
         hostClubID = clubID;
         newEvent.EHostID = hostClubID;
         newEvent.ETitle = EventTitle;
+        ClubInfo ci = new ClubInfo();
+        ci = ClubManager.GetSetting(hostClubID);
+        newEvent.EHostPhone = ci.ProPhone;
         Session["Event"] = newEvent;
         btnSave.BackColor = Color.Green;
         btnSave.Visible = true;

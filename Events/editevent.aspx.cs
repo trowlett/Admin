@@ -19,6 +19,8 @@ public partial class Events_editevent : System.Web.UI.Page
     private string eventID;
     private string element;
     private string action;
+    private string oldEventID;
+    private string newEventID;
 
     private const string formatDate = "M/d/yy h:mm tt";
 
@@ -91,7 +93,7 @@ public partial class Events_editevent : System.Web.UI.Page
             pnlDelete.Visible = true;
             tbDelDate.Text = ev.Date.ToString(formatDate);
             tbDelHost.Text = ev.HostID;
-            tbDelTime.Text = ev.Date.ToShortTimeString();
+//            tbDelTime.Text = ev.Date.ToShortTimeString();
             tbDelTitle.Text = ev.Title.Trim();
             tbDelha.Text = ev.Type.Trim();
             tbDelCost.Text = ev.Cost.Trim();
@@ -146,13 +148,13 @@ public partial class Events_editevent : System.Web.UI.Page
         tbEditDate.Text = ev.Date.ToString(formatDate);
 //        tbEditDate.Text = ev.Date.ToString("MM/dd/yyyy");
         tbEditDate.Enabled = true;
-//        tbEditDate.ToolTip = "Edit date.";
+//        tbEditDate.ToolTip = "Change date.";
         tbEditHost.Text = ev.HostID;
         tbEditHost.Enabled = true;
-//        tbEditHost.ToolTip = "Edit Host ID.";
-        tbEditTime.Text = ev.Date.ToShortTimeString();
-        tbEditTime.Enabled = true;
-//        tbEditTime.ToolTip = "Edit Time.";
+//        tbEditHost.ToolTip = "Change Host ID.";
+//        tbEditTime.Text = ev.Date.ToShortTimeString();
+//        tbEditTime.Enabled = false;
+//        tbEditTime.ToolTip = "Change Time.";
         tbEditTitle.Text = ev.Title.Trim();
         tbEditha.Text = ev.Type.Trim();
         tbEditCost.Text = ev.Cost.Trim();
@@ -175,41 +177,145 @@ public partial class Events_editevent : System.Web.UI.Page
 //        eventID = (string)Session["EVENTID"];
         Settings club = new Settings();
         club = (Settings)Session["Settings"];
-        string sdbc = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
-        MRMISGADB db = new MRMISGADB(sdbc);
-        //
-        // To Do:   Data in Textboxes need to be validated
-        //
-        //  Update selected Event in SQL database
-        //
-
-        var ev = db.Events.FirstOrDefault(et => et.ClubID == club.ClubID && et.EventID == eventID);
         MrTimeZone etz = new MrTimeZone();
-        ev.CreationDate = etz.eastTimeNow();
-        ev.Title = tbEditTitle.Text;
-        ev.Type = tbEditha.Text;
-        ev.Cost = tbEditCost.Text;
-        ev.Deadline = Convert.ToDateTime(tbEditDeadline.Text);
-        ev.Guest = tbEditGuest.Text;
-        int pl = 0;
-        try
+        //
+        // To Do:   Data in Textboxes needs to be validated
+        //
+        oldEventID = eventID;
+        bool saveOK;
+        bool newEventDataOK = true;
+        string errMsg = "";
+        SysEvent nev = new SysEvent();
+        nev.EClubID = club.ClubID;
+        nev.ECreationDate = etz.eastTimeNow();
+        DateTime newDate;
+        if (Verify.Date(tbEditDate.Text, out newDate))
         {
-            pl = Convert.ToInt32(tbEditPlayerLimit.Text);
+            nev.EDate = newDate;
+            tbEditDate.Text = nev.EDate.ToString(formatDate);
+//            tbEditTime.Text = nev.EDate.ToShortTimeString();
         }
-        catch (FormatException ex)
+        else
+        {
+            errMsg = "Event Date & Time format error";
+            newEventDataOK = false;
+        }
+
+        string hostClubID = tbEditHost.Text.Trim();
+        if (Verify.HostClubID(hostClubID))
+        {
+            nev.EHostID = hostClubID;
+            tbEditHost.Text = hostClubID;
+        }
+        else
+        {
+            errMsg += "; Invalid Host ID";
+            newEventDataOK = false;
+        }
+
+        if (Verify.EventType(tbEditha.Text))
+        {
+            nev.EType = tbEditha.Text.Trim();
+        }
+        else
+        {
+            newEventDataOK = false;
+            errMsg += "; Invalid h/a field -  must be Home, Away, Club. MISGA or MiSGA";
+        }
+        if (Verify.Date(tbEditDeadline.Text, out newDate))
+        {
+            nev.EDeadline = newDate;
+            tbEditDeadline.Text = nev.EDeadline.ToString(formatDate);
+        }
+        else
+        {
+            newEventDataOK = false;
+            errMsg += "; Deadline Date & Time format error";
+        }
+        if (Verify.Date(tbEditPost.Text, out newDate))
+        {
+            nev.EPostDate = newDate;
+            tbEditPost.Text = nev.EPostDate.ToString(formatDate);
+        }
+        else
+        {
+            newEventDataOK = false;
+            errMsg += "; Post Date & Time format error.";
+        }
+        nev.EPlayerLimit = Verify.PlayerLimit(tbEditPlayerLimit.Text);
+        tbEditPlayerLimit.Text = nev.EPlayerLimit.ToString("##0");
+/*        int pl = 0;
+        if (!int.TryParse(tbEditPlayerLimit.Text, out pl))
         {
             pl = 60;
+            tbEditPlayerLimit.Text = "60";
         }
-        ev.PlayerLimit = pl;
-        ev.PostDate = Convert.ToDateTime(tbEditPost.Text);
-        ev.SpecialRule = tbEditSR.Text;
-        db.SubmitChanges();
-        lblStatus.Text = string.Format("Event {0} successfully updated.",eventID);
+        nev.EPlayerLimit = pl;
+        */
+        nev.ETitle = tbEditTitle.Text;
+        nev.ECost = Verify.Cost(tbEditCost.Text);
+        tbEditCost.Text = nev.ECost;
+        nev.EGuest = tbEditGuest.Text;
+        nev.ESpecialRule = tbEditSR.Text;
+
+        if (newEventDataOK)
+        {
+            newEventID = nev.EClubID + nev.EDate.ToString("yyMMddHH") + hostClubID;
+            nev.Id = newEventID;
+            saveOK = UpdateEventDatabase(nev, oldEventID);
+            lblStatus.Text = string.Format("Event {0} successfully updated.", eventID);
+        }
+        else
+        {
+            lblStatus.Text = errMsg;
+        }
         btnCancel.Text = "Back";
-        btnCancel.ToolTip = "Click to go back to Modufy Events Page.";
+        btnCancel.ToolTip = "Click to go back to Modify Events Page.";
         btnSave.Visible = false;
 
 
+    }
+    protected bool UpdateEventDatabase(SysEvent newEventData, string oldEventID)
+    {
+        bool result = true;
+
+        if (newEventData.Id == oldEventID)
+        {
+            // if same Event ID, then uppdate Old Event with changes
+            SaveChangedEvent(newEventData, oldEventID);
+        }
+        else
+        {
+            // has Host I changed?  If so, make sure Title has changed.  
+            // Validate Event Type with a change in HostID also because it might have changed from Away to Home.
+            // add new Event
+            // change signup list for old event to new event
+            // delete old event
+        }
+        return result;
+    }
+
+    protected void SaveChangedEvent(SysEvent newEv, string oldID)
+    {
+        Settings club = new Settings();
+        club = (Settings)Session["Settings"];
+        MrTimeZone etz = new MrTimeZone();
+        string sdbc = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
+        MRMISGADB db = new MRMISGADB(sdbc);
+;
+        var ev = db.Events.FirstOrDefault(et => et.ClubID == club.ClubID && et.EventID == oldID);
+
+        ev.CreationDate = newEv.ECreationDate;
+        ev.Title = newEv.ETitle;
+        ev.Type = newEv.EType;
+        ev.Cost = newEv.ECost;
+        ev.PlayerLimit = newEv.EPlayerLimit;
+        ev.Deadline = newEv.EDeadline;
+        ev.Guest = newEv.EGuest;
+        ev.PostDate = newEv.EPostDate;
+        ev.SpecialRule = newEv.ESpecialRule;
+        db.SubmitChanges();
+        return;
     }
     protected void btnCancel_Click(object sender, EventArgs e)
     {

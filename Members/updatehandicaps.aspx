@@ -4,8 +4,10 @@
     <link href="../Styles/memberslist.css" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+        <p style="width: 100%;text-align: right; font-size: small;">April 15, 2017</p>
     <h2>
-		Update Members Handicaps</h2>
+		Update Members Handicaps
+</h2>
 		<asp:Label ID="lblFileName" runat="server" Text="FileName"></asp:Label>
             <asp:Label ID="lblFileNotFound" runat="server" Text=" File Not Found" Visible="False" ForeColor="Red" style="font-size: medium; font-weight: 700"></asp:Label>    
 		<table style="border: none;"><tr style="border: none;">

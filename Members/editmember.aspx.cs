@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 
 public partial class Members_editmember : System.Web.UI.Page
 {
+    public DateTime BeginPeriod { get; set; }
+    public DateTime EndPeriod { get; set; }
     public int ActiveSignups = 0;
     MembersList ml {get; set;}
     private DateTime etzNow;
@@ -21,6 +23,11 @@ public partial class Members_editmember : System.Web.UI.Page
         clubSettings = (Settings)Session["Settings"];
         etzNow = new MrTimeZone().eastTimeNow();
         lblNow.Text = etzNow.ToString();
+
+        HandicapDates HcpDates = new HandicapDates();
+        BeginPeriod = HcpDates.CalcBeginPeriodDate();
+        EndPeriod = HcpDates.CalcEndPeriodDate();
+
         if (!IsPostBack)
         {
             mlcount = ShowMembers();
@@ -29,6 +36,17 @@ public partial class Members_editmember : System.Web.UI.Page
             Label2.Text = "";
             UpdatePanel1.Visible = false;
         }
+/*        MrTimeZone etz = new MrTimeZone();
+        DateTime now = etz.eastTimeNow();
+        int day = now.Day < 15 ? 1 : 15;
+        BeginPeriod = new DateTime(now.Year, now.Month, day, 0, 0, 0);
+        DateTime tempNextMonth = new DateTime(now.Year, now.Month, 1, 23, 59, 59);
+        DateTime nextMonth = tempNextMonth.AddMonths(1);
+        DateTime lastDayThisMonth = nextMonth.AddDays(-1);
+        int ldm = lastDayThisMonth.Day;  // last day of month
+        int lastDay = (day == 1) ? 14 : ldm;
+        EndPeriod = new DateTime(now.Year, now.Month, lastDay, 23, 59, 59);
+*/
     }
     protected int ShowMembers()
     {

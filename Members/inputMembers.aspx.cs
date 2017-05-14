@@ -13,6 +13,8 @@ public partial class Members_input : System.Web.UI.Page
     MembersList inputMembersList { get; set; }
     MembersList currentMembersList { get; set; }
     PlayersCollection newMembersRoster { get; set; }
+    public DateTime HcpBegin { get; set; }
+    public DateTime HcpEnd { get; set; }
     protected string _clubID;
     Settings _clubSettings;
     public const string keyPlayers = "Players";
@@ -23,11 +25,13 @@ public partial class Members_input : System.Web.UI.Page
         clubSettings = new Settings();
         clubSettings = (Settings)Session["Settings"];
         club = clubSettings.ClubInfo.ClubName;
+        HandicapDates HDates = new HandicapDates();
+        HcpBegin = HDates.CalcBeginPeriodDate();
+        HcpEnd = HDates.CalcEndPeriodDate();
         if (!IsPostBack)
         {
             if (clubSettings.ClubID == "229") tbInputFileName.Text = "229-rwmembers.txt";
         }
-        
     }
     protected void Button1_Click(object sender, EventArgs e)
     {

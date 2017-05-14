@@ -17,8 +17,10 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-
-        <h2>Maintain Users having access to MISGA-SignUp</h2>
+<p style="text-align: right; font-size: .8em; height: 15px;">Last modified:
+            4/12/2017
+            </p>
+        <h2 style="margin-top: 0px; padding-top: 0px;">Maintain Users having access to MISGA-SignUp</h2>
     <asp:Panel ID="MainPanel1" runat="server">
                 <asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString='<%$ ConnectionStrings:MRMISGADBConnect %>' 
                     DeleteCommand="DELETE FROM Users WHERE (UserID = @UserID)" 
@@ -51,7 +53,7 @@
                 <asp:Parameter Name="ChangeDate"></asp:Parameter>
             </UpdateParameters>
         </asp:SqlDataSource>
-        <asp:Label ID="MessageLabel" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="MessageLabel" runat="server" Text="Label" ForeColor="Red"></asp:Label>
 
     <div class="user_div">
         <asp:Panel ID="GridPanel" runat="server" Visible="False">
@@ -320,6 +322,7 @@
                         <td style="width: 100px;align-content: center;"><asp:Button ID="CancelButton" runat="server" CausesValidation="True" CommandName="Cancel" Text="Cancel" /></td>
                     </tr>
                 </table>
+
             </ItemTemplate>
             <PagerStyle BackColor="#CCCCCC" ForeColor="Black" HorizontalAlign="Left" Wrap="False" />
                 <PagerTemplate>

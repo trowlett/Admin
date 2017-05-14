@@ -288,10 +288,10 @@
         <asp:TableRow ID="buttons" runat="server">
             <asp:TableCell ID="sp5" runat="server" Width="200px">&nbsp;</asp:TableCell>
             <asp:TableCell ID="idSave" runat="server" Width="200px">
-                <asp:Button ID="btnSave" runat="server" Text="SAVE" OnClick="btnSave_Click" Width="80px" />
+                <asp:Button ID="btnSave" runat="server" Text="SAVE" OnClick="btnSave_Click" Width="80px" Font-Bold="True" />
             </asp:TableCell>
             <asp:TableCell ID="idCancel" runat="server" Width="200px">
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" Width="80px" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" Width="80px" Font-Bold="True" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

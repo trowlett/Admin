@@ -63,7 +63,7 @@
 
 
 			<ItemTemplate>
-				<tr class="<%# ((MrMember)Container.DataItem).IsHandicapCurrent() %>">
+				<tr class="<%# ((MrMember)Container.DataItem).IsHandicapCurrent(HcpBegin, HcpEnd) %>">
 					<td class="pid"><%# ((MrMember)Container.DataItem).pID %></td>
 					<td class="mname"><%# ((MrMember)Container.DataItem).name %></td>
                     <td class="memberID"><%# ((MrMember)Container.DataItem).memberNumber.Trim() %></td>
@@ -101,7 +101,7 @@
 
 
 			<ItemTemplate>
-				<tr class="<%# ((MrMember)Container.DataItem).IsHandicapCurrent() %>">
+				<tr class="<%# ((MrMember)Container.DataItem).IsHandicapCurrent(HcpBegin, HcpEnd) %>">
 					<td class="pid"><%# ((MrMember)Container.DataItem).pID %></td>
 					<td class="mname"><%# ((MrMember)Container.DataItem).name %></td>
                     <td class="memberID"><%# ((MrMember)Container.DataItem).memberNumber.Trim() %></td>

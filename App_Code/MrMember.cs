@@ -31,18 +31,25 @@ public class MrMember
     }
     public bool IsUpdated(DateTime dt)
     {
-        return (this.hdate == dt) ;
+        DateTime xdt = new DateTime(dt.Year, dt.Month, dt.Day);
+        DateTime xhdate = new DateTime(hdate.Year, hdate.Month, hdate.Day);
+        return (xhdate == xdt);
     }
 
-    public string IsHandicapCurrent()
+    public string IsHandicapCurrent(DateTime beginPeriod, DateTime endPeriod)
     {
-        MrTimeZone etz = new MrTimeZone();
+/*        MrTimeZone etz = new MrTimeZone();
         DateTime now = etz.eastTimeNow();
         int day = now.Day < 15 ? 1 : 15;
-        DateTime begin = new DateTime(now.Year,now.Month,day,0,0,0);
-        int lastDay = (day == 1) ? 14 : now.AddMonths(1).AddDays(-1).Day;
-        DateTime end = new DateTime(now.Year,now.Month,lastDay,23,59,59);
-        if ((this.hdate >= begin) && (this.hdate <= end))
+        DateTime beginPeriod = new DateTime(now.Year,now.Month,day,0,0,0);
+        DateTime tempNextMonth = new DateTime(now.Year, now.Month, 1, 23,59,59);
+        DateTime nextMonth = tempNextMonth.AddMonths(1);
+        DateTime lastDayThisMonth = nextMonth.AddDays(-1);
+        int ldm = lastDayThisMonth.Day;  // last day of month
+        int lastDay = (day == 1) ? 14 : ldm;
+//        DateTime endPeriod = new DateTime(now.Year,now.Month,lastDay,23,59,59);
+*/
+        if ((hdate >= beginPeriod) && (hdate <= endPeriod))
         {
             return "current";
         }
@@ -50,6 +57,7 @@ public class MrMember
             return "update";
         }
     }
+
 
 /*        if (this.hdate == dt)
         {
