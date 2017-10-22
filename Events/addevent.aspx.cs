@@ -117,7 +117,7 @@ public partial class Events_addevent : System.Web.UI.Page
             EventTitle = cbClubTitleUpper.Checked? tbClubTitle.Text.ToUpper(): tbClubTitle.Text;
         newEvent.ETitle = EventTitle;
         ValidateAddEvent();
-        if (EventAddedToDB(Event))
+        if (SysEvent.EventAddToDB(Event))
         {
             lblStatus.Text = "Event added successfully";
             btnSave.Visible = false;
@@ -334,43 +334,6 @@ public partial class Events_addevent : System.Web.UI.Page
         btnSave.Enabled = true;
     }
 
-    protected bool EventAddedToDB(SysEvent se)
-    {
-        bool status = false;
-        string MRMISGADBConn = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
-        MRMISGADB db = new MRMISGADB(MRMISGADBConn);
-        Events ev = db.Events.FirstOrDefault(p => ((p.ClubID == se.EClubID) && (p.EventID == se.Id)));
-        if (ev == null)
-        {
-            Events newEvent = new Events()
-            {
-                ClubID = se.EClubID,
-                EventID = se.Id,
-                Date = se.EDate,
-                Type = se.EType,
-                Title = se.ETitle,
-                Cost = se.ECost,
-                //                        Time = e.ETime,
-                Deadline = se.EDeadline,
-                HostID = se.EHostID,
-                SpecialRule = se.ESpecialRule,
-                PlayerLimit = se.EPlayerLimit,
-                Guest = se.EGuest,
-                HostPhone = se.EHostPhone,
-                PostDate = se.EPostDate,
-                CreationDate = se.ECreationDate
-            };
-            db.Events.InsertOnSubmit(newEvent);
-            db.SubmitChanges();
-            status = true;
-        }
-        else
-        {
-            status = false;
-        }
-
-        return status; 
-    }
     protected void btnClubTitleDone_Click(object sender, EventArgs e)
     {
         processClubEvent();

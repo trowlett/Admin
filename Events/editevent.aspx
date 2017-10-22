@@ -29,7 +29,7 @@
 }
 </style>
    
-      <% DateModified = "March 20, 2017"; %>
+      <% DateModified = "October 22, 2017"; %>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -70,7 +70,9 @@
             </tr>
         </table>
         <br />
-        <asp:Label ID="lblStatus" runat="server" Text="" ForeColor="Red"></asp:Label>
+        <p><span style="color: red">
+        <asp:Literal ID="lblStatus" runat="server" Text=""></asp:Literal>
+        </span></p>
         <table style="margin-left: 100px;">
             <tr>
                 <td style="width: 120px;">
@@ -138,20 +140,18 @@
     </div>
 
     </asp:Panel>
-    <asp:Panel ID="pnlError" runat="server">
-        <asp:Label ID="lblError" runat="server" Text="Error Message" ForeColor="Red"></asp:Label>
-        <br />
-    <asp:RegularExpressionValidator ID="revCost" runat="server" 
+
+<!-- pnlError goes here  -->
+<!--    <asp:RegularExpressionValidator ID="revCost" runat="server" 
         ErrorMessage="Entry Fee must be numeric or TBD.  If not started with $, one will be inserted." 
         ValidationExpression="^\d*(\.\d{2,})?(tbd)?(TBD)?$" 
         ControlToValidate="tbEditCost" ForeColor="Red"></asp:RegularExpressionValidator>
         <br />
-    <asp:RequiredFieldValidator ID="rfvTime1" runat="server" 
-        ControlToValidate="tbEditTime" 
-              ErrorMessage="Tee Time Required" 
-        ForeColor="Red" Visible="False"></asp:RequiredFieldValidator>
+-->
+        <asp:Label ID="lblError" runat="server" Text="Error Message" ForeColor="Red"></asp:Label>
+        <br />
+<!--     </asp:Panel>  End of pnlError  -->
 
-    </asp:Panel>
     <asp:Panel ID="pnlBottom" runat="server">
         <div class="last_modified">
             <p>

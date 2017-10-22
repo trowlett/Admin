@@ -219,6 +219,44 @@ public class SignupList
 		return mc;
 	}
 
+    public static int ChangeListToNewEvent(SysEvent OldEvent, SysEvent NewEvent)
+    {
+        int count = 0;                  // Initialize count of SignUp Records changed
+        string clubID = OldEvent.EClubID;
+
+        string MRMISGADBConn = ConfigurationManager.ConnectionStrings["MRMISGADBConnect"].ToString();
+        MRMISGADB db = new MRMISGADB(MRMISGADBConn);
+        var plist =
+            from p in db.PlayersList
+            where (p.ClubID == clubID && p.EventID == OldEvent.Id)
+            select p;
+        if (plist != null)
+        {
+            foreach (var entry in plist)
+            {
+                db.PlayersList.DeleteOnSubmit(entry);
+                db.SubmitChanges();
+                PlayersList newSignup = new PlayersList()
+                {
+                    EventID = NewEvent.Id,
+                    ClubID = entry.ClubID,
+                    PlayerID = entry.PlayerID,
+                    TransDate = entry.TransDate,
+                    Action = entry.Action,
+                    Carpool = entry.Carpool,
+                    Marked = entry.Marked,
+                    SpecialRule = entry.SpecialRule,
+                    GuestID = entry.GuestID
+                };
+                db.PlayersList.InsertOnSubmit(newSignup);
+                db.SubmitChanges();
+                count++;
+            }
+        }
+
+        return count;
+    }
+
 	public SignupList()
 	{
 		//

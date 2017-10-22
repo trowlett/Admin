@@ -346,6 +346,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="TransferFromSourceClubId" nillable="true" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="SendWelcomeEmail" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="OptInAllEmail" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoUserAction" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FindPublicPlayerClub" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="FriendlyId" type="s:int" />
           <s:element minOccurs="1" maxOccurs="1" name="NetworkId" type="s:int" />
@@ -365,6 +366,7 @@
           <s:element minOccurs="1" maxOccurs="1" name="AllowUniqueNotifications" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="AllowNewsletters" type="s:boolean" />
           <s:element minOccurs="1" maxOccurs="1" name="AllowPrintNewsLetters" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastScorePostedOn" nillable="true" type="s:date" />
           <s:element minOccurs="1" maxOccurs="1" name="AgreedToTermsAndConditionsOn" nillable="true" type="s:date" />
           <s:element minOccurs="1" maxOccurs="1" name="RequestedGolfCanadaCardOn" nillable="true" type="s:date" />
           <s:element minOccurs="1" maxOccurs="1" name="ClubGroupId" type="s:int" />
@@ -428,6 +430,10 @@
           <s:enumeration value="Middle" />
           <s:enumeration value="Forward" />
           <s:enumeration value="Other" />
+          <s:enumeration value="Other_A" />
+          <s:enumeration value="Other_B" />
+          <s:enumeration value="Other_C" />
+          <s:enumeration value="Other_D" />
         </s:restriction>
       </s:simpleType>
       <s:simpleType name="MemberAction">

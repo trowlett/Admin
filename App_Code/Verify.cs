@@ -48,12 +48,12 @@ public class Verify
     public static bool EventType(string eventType)
     {
         bool result = false;
-
-        if (eventType == "Home") result = true;
-        if (eventType == "MISGA") result = true;
-        if (eventType == "Away") result = true;
-        if (eventType == "Club") result = true;
-        if (eventType == "MiSGA") result = true;
+        string et = eventType.Trim();
+        if (et == "Home") result = true;
+        if (et == "MISGA") result = true;
+        if (et == "Away") result = true;
+        if (et == "Club") result = true;
+        if (et == "MiSGA") result = true;
 
         return result;
     }
