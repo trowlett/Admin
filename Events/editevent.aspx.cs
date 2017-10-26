@@ -257,20 +257,11 @@ public partial class Events_editevent : System.Web.UI.Page
         nev.EGuest = tbEditGuest.Text;
         nev.ESpecialRule = tbEditSR.Text;
         nev.EHostPhone = oldEvent.EHostPhone;
-/*
-        string newTime = nev.EDate.ToShortTimeString();
-        string oldTime = oldEvent.EDate.ToShortTimeString();
-        bool teeTimeChanged = false;
-        if (newTime != oldTime)
-        {
-            teeTimeChanged = true;
-        }
-    */
         newEventID = nev.EClubID + nev.EDate.ToString("yyMMddHH") + hostClubID;
         nev.Id = newEventID;
         if (newEventDataOK)                         // Is the information for the new Event OK?
         {
-            if (nev.Id == oldEvent.Id)             // Yes Info OK.  Has there been a change to the Event ID?
+            if (nev.Id == oldEvent.Id)              // Yes Info OK.  Has there been a change to the Event ID?
             {
                 SaveChangedEvent(nev);   // Put updated event on database.
                 lblError.Text = string.Format("Event {0} successfully updated.", nev.Id);
